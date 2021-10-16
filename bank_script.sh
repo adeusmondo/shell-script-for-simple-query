@@ -1,16 +1,31 @@
-#!/usr/bash
-#Ubunto 16.04
+#!/usr/bin/env bash
 
-echo "\nBanco Shell Script"
-echo -n "Informe seu usuário: "
-read user
 
-echo "\nBuscando informações..."
-wget -q https://raw.githubusercontent.com/leandersonandre/shell-script/master/lista_usuarios.txt
-result=$(cat lista_usuarios.txt | grep -w "$user")
+welcome()
+{
+	echo "Banco Shell Script"
+}
+
+get_input_user()
+{
+	echo -n "Informe seu usuário: "
+	read user
+}
+
+search_users()
+{
+	echo "Buscando informações..."
+	wget -q https://raw.githubusercontent.com/leandersonandre/shell-script/master/lista_usuarios.txt
+	result=$(cat lista_usuarios.txt | grep -w "$user")
+}
+
+
+welcome
+get_input_user
+search_users
 
 if [ $result ]; then
-    echo "\nUsuário encontrado.\nBaixando dados do usuário..."
+    echo "Usuário encontrado.\nBaixando dados do usuário..."
     wget -qO- https://github.com/leandersonandre/shell-script/blob/master/$user.tar.gz?raw=true | tar -xz
     
     echo "Download completo"
@@ -37,7 +52,7 @@ if [ $result ]; then
         esac
     done
 else
-    echo "Usuário $user não encontrado\n"
+    echo "Usuário $user não encontrado"
     
     if [ lista_usuarios.txt ]; then
         rm lista_usuarios.txt

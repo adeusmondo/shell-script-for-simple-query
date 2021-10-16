@@ -1,10 +1,12 @@
-# Problema
+# Atividade acadêmico - Problema
+
 Desenvolva um script para consultar informações sobre a conta bancária de um cliente. 
 
-O script deverá solicitar o usuário.
+O script deverá solicitar o usuário:
+
 ```
-$./bank_script.sh
-$ Banco Shell Script
+$ ./bank_script.sh
+Banco Shell Script
 $ Informe seu usuário: james
 $ Buscando informações...
 ```
